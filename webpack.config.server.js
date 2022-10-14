@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -5,7 +7,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   name: "server",
   entry: {
-    server: path.resolve(__dirname, "server", "server.ts"),
+    server: path.resolve(__dirname, "server", "server.tsx"),
   },
   mode: "production",
   output: {
