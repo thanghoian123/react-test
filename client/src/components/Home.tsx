@@ -6,7 +6,7 @@ function Home() {
   console.log(calc, "==========");
   return (
     <div>
-      Home page
+      <h1>Home page</h1>
       <p>{count}</p>
       <button onClick={up}>upp</button>
       <button onClick={down}>down</button>
