@@ -1,13 +1,11 @@
 import express from "express";
 import fs from "fs";
-import { createMemoryHistory } from "history";
 import path from "path";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { App } from "../client/src/app";
 
-const history = createMemoryHistory();
 const server = express();
 
 server.set("view engine", "ejs");

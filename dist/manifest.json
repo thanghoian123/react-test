@@ -1,0 +1,4 @@
+{
+  "server.js": "server.js",
+  "views/client.ejs": "views/client.ejs"
+}

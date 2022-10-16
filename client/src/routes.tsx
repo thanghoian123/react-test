@@ -1,6 +1,8 @@
 
 import * as React from 'react';
-import Home from './components/Home';
+import Home from './views/Home';
+
+import History from './views/History';
 
 const routes = [
   {
@@ -12,6 +14,11 @@ const routes = [
     path: '/home',
     exact: true,
     C: ()=>(<Home/>),
+  },
+  {
+    path: '/history',
+    exact: true,
+    C: ()=>(<History/>),
   }
 ];
 

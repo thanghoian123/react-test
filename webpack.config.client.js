@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
 // webpack.config.client.js
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -26,6 +28,10 @@ module.exports = {
         options: {
           configFile: "tsconfig.client.json",
         },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

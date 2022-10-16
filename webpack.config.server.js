@@ -4,6 +4,9 @@ const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/
+
 module.exports = {
   name: "server",
   entry: {
@@ -16,7 +19,7 @@ module.exports = {
   },
   externals: [nodeExternals()],
   resolve: {
-    extensions: [".ts", ".tsx"],
+    extensions: [".ts", ".tsx", ".js", '.jsx'],
   },
   module: {
     rules: [
@@ -26,6 +29,14 @@ module.exports = {
         options: {
           configFile: "tsconfig.server.json",
         },
+      },
+      {
+        test: sassRegex,
+        exclude: sassModuleRegex,
+        use: [
+          require.resolve('css-loader'),
+          require.resolve('sass-loader')
+        ]
       },
     ],
   },

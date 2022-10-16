@@ -1,10 +1,10 @@
 // client/src/app.tsx
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-import NoMatch from "./components/NoMatch";
+import "./app.scss";
 import { AppProvider } from "./contexts/AppContext";
 import routes from "./routes";
-
+import NoMatch from "./views/NoMatch";
 export const App: React.FC = () => {
   return (
     <AppProvider>
