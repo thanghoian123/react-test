@@ -36,11 +36,29 @@ const toLocaleString = (num: any) =>
 const removeSpaces = (num: any) => num.toString().replace(/\s/g, "");
 
 const historyCalculator = (calc: ICalc[]) => {
-  localStorage.setItem("history", JSON.stringify(calc));
+
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    localStorage.setItem("history", JSON.stringify(calc));
+    // 👉️ can use localStorage here
+  } else {
+    console.log('You are on the server')
+    // 👉️ can't use localStorage
+  }
+ 
 };
 
 const getHistory = () => {
-  return JSON.parse(localStorage.getItem("history") || "[]");
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    return JSON.parse(localStorage.getItem("history") || "[]");
+    // 👉️ can use localStorage here
+  } else {
+    console.log('You are on the server')
+    return [];
+    // 👉️ can't use localStorage
+  }
+  // return JSON.parse(localStorage.getItem("history") || "[]");
 };
 
 interface IState {
