@@ -27,7 +27,7 @@ export const defaultState: IState = {
     percentClickHandler: () => {},
     resetClickHandler: () => {},
   },
-  history:[]
+  history: [],
 };
 
 const toLocaleString = (num: any) =>
@@ -58,7 +58,7 @@ export const AppProvider = ({ children }: { children: React.ReactElement }) => {
     tempEval: "",
   });
 
-  // const historyData = getHistory();
+  const history = getHistory();
 
   const numClickHandler = (e: string) => {
     const value = e;
@@ -111,10 +111,10 @@ export const AppProvider = ({ children }: { children: React.ReactElement }) => {
   const equalsClickHandler = () => {
     try {
       const res = eval(calc.tempEval + calc.num).toString();
-      
+      history.push({ ...calc, res, tempEval: calc.tempEval + calc.num });
+      historyCalculator([...history]);
+
       setCalc({ ...calc, res, num: 0, tempEval: "" });
-      // historyData.push({ ...calc, res, tempEval: calc.tempEval + calc.num });
-      // historyCalculator([...historyData]);
     } catch (error) {}
     // if (calc.sign && calc.num) {
     //   setCalc({
@@ -183,7 +183,7 @@ export const AppProvider = ({ children }: { children: React.ReactElement }) => {
   };
 
   return (
-    <AppContext.Provider value={{ ...defaultState, calc, calcMethod }}>
+    <AppContext.Provider value={{ ...defaultState, calc, calcMethod, history }}>
       {children}
     </AppContext.Provider>
   );
